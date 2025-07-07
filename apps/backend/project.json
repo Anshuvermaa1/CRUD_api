@@ -1,0 +1,39 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "backend",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/backend && source .venv/bin/activate && python manage.py runserver localhost:8000",
+        "cwd": ".",
+        "parallel": false
+      }
+    },
+    "makemigrations": {
+  "executor": "nx:run-commands",
+  "options": {
+    "command": "cd apps/backend && source .venv/bin/activate && python manage.py makemigrations",
+    "cwd": ".",
+    "parallel": false
+  }
+},
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/backend && source .venv/bin/activate && python manage.py migrate",
+        "cwd": ".",
+        "parallel": false
+      }
+    },
+    "shell": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/backend && source .venv/bin/activate && python manage.py shell",
+        "cwd": ".",
+        "parallel": false
+      }
+    }
+  }
+}

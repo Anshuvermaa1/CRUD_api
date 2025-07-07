@@ -1,0 +1,23 @@
+{
+  "name": "@my-monorepo/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@hookform/resolvers": "^5.1.1",
+    "@tanstack/react-query": "^5.81.5",
+    "@tanstack/react-query-devtools": "^5.81.5",
+    "graphql": "^16.11.0",
+    "react-hook-form": "^7.60.0",
+    "react-toastify": "^11.0.5",
+    "zod": "^3.25.75"
+  },
+  "scripts": {
+    "codegen": "graphql-codegen --config codegen.ts"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.7",
+    "@graphql-codegen/client-preset": "4.8.3"
+  }
+}

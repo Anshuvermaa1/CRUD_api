@@ -1,0 +1,291 @@
+{
+  "nodes": {
+    "frontend": {
+      "name": "frontend",
+      "type": "app",
+      "data": {
+        "root": "apps/frontend",
+        "projectType": "application",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
+              "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/tsconfig.app.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript",
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "pnpm exec tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "apps/frontend",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "@nx/linter:eslint",
+            "options": {
+              "lintFilePatterns": [
+                "apps/frontend/src/**/*.ts",
+                "apps/frontend/src/**/*.tsx"
+              ]
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/vite:build",
+            "outputs": [
+              "dist/apps/frontend"
+            ],
+            "options": {
+              "outputPath": "dist/apps/frontend"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve": {
+            "executor": "@nx/vite:dev-server",
+            "options": {
+              "buildTarget": "frontend:build"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "continuous": true
+          },
+          "dev": {
+            "continuous": true,
+            "options": {
+              "cwd": "apps/frontend",
+              "command": "vite"
+            },
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Starts Vite dev server",
+              "help": {
+                "command": "pnpm exec vite --help",
+                "example": {
+                  "options": {
+                    "port": 3000
+                  }
+                }
+              }
+            },
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "preview": {
+            "continuous": true,
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "cwd": "apps/frontend",
+              "command": "vite preview"
+            },
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Locally preview Vite production build",
+              "help": {
+                "command": "pnpm exec vite preview --help",
+                "example": {
+                  "options": {
+                    "port": 3000
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve-static": {
+            "continuous": true,
+            "executor": "@nx/web:file-server",
+            "options": {
+              "buildTarget": "build",
+              "spa": true
+            },
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "configurations": {},
+            "parallelism": true
+          },
+          "build-deps": {
+            "dependsOn": [
+              "^build"
+            ],
+            "configurations": {},
+            "options": {},
+            "parallelism": true,
+            "executor": "nx:noop"
+          },
+          "watch-deps": {
+            "continuous": true,
+            "dependsOn": [
+              "build-deps"
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "pnpm exec nx watch --projects frontend --includeDependentProjects -- pnpm exec nx build-deps frontend"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "codegen": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "codegen"
+            },
+            "metadata": {
+              "scriptContent": "graphql-codegen --config codegen.ts",
+              "runCommand": "pnpm run codegen"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "coverage/apps/frontend"
+            ],
+            "configurations": {},
+            "options": {},
+            "parallelism": true
+          }
+        },
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "codegen"
+            ]
+          },
+          "js": {
+            "packageName": "@my-monorepo/frontend",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "name": "frontend",
+        "tags": [
+          "npm:private"
+        ],
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/frontend/src",
+        "implicitDependencies": []
+      }
+    },
+    "backend": {
+      "name": "backend",
+      "type": "app",
+      "data": {
+        "root": "apps/backend",
+        "name": "backend",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "targets": {
+          "serve": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd apps/backend && source .venv/bin/activate && python manage.py runserver localhost:8000",
+              "cwd": ".",
+              "parallel": false
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "makemigrations": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd apps/backend && source .venv/bin/activate && python manage.py makemigrations",
+              "cwd": ".",
+              "parallel": false
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "migrate": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd apps/backend && source .venv/bin/activate && python manage.py migrate",
+              "cwd": ".",
+              "parallel": false
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "shell": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd apps/backend && source .venv/bin/activate && python manage.py shell",
+              "cwd": ".",
+              "parallel": false
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": [],
+        "tags": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "frontend": [],
+    "backend": []
+  },
+  "version": "6.0",
+  "errors": [],
+  "computedAt": 1751930253575
+}

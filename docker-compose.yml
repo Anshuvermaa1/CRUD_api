@@ -1,0 +1,29 @@
+version: "3.10"
+services:
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./apps/backend:/usr/src/app
+    environment:
+      - DEBUG=1
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./apps/frontend:/usr/src/app
+    environment:
+      - NODE_ENV=development
+    command: "pnpm dev"
+

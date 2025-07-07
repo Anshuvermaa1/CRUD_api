@@ -1,0 +1,355 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.2.2",
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/react/router-plugin",
+      "options": {
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "startTargetName": "start",
+        "watchDepsTargetName": "watch-deps",
+        "buildDepsTargetName": "build-deps",
+        "typecheckTargetName": "typecheck"
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "name": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "eslint.config.mjs",
+        "hash": "8944620160701465"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "16925574183838110578"
+      },
+      {
+        "file": "README.md",
+        "hash": "13384616021141419824"
+      },
+      {
+        "file": "codegen.yml",
+        "hash": "2356855301756640177"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4967186781343977641"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "2653529739611990858"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "15655878177218533551"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "11561930799186230457"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "1880664178033616490"
+      },
+      {
+        "file": "package.json",
+        "hash": "12513470287004489356"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "8900268571896142108"
+      },
+      {
+        "file": "nx.json",
+        "hash": "17566446820950321099"
+      },
+      {
+        "file": "note.txt",
+        "hash": "16363386380350140776"
+      }
+    ],
+    "projectFileMap": {
+      "frontend": [
+        {
+          "file": "apps/frontend/codegen.ts",
+          "hash": "7082187093169539339"
+        },
+        {
+          "file": "apps/frontend/eslint.config.mjs",
+          "hash": "8789163670399984295",
+          "deps": [
+            "npm:@nx/eslint-plugin",
+            "undefined"
+          ]
+        },
+        {
+          "file": "apps/frontend/index.html",
+          "hash": "2323699249478598756"
+        },
+        {
+          "file": "apps/frontend/package.json",
+          "hash": "8463295459451628040",
+          "deps": [
+            "npm:@graphql-codegen/cli",
+            "npm:@graphql-codegen/client-preset",
+            "npm:@apollo/client",
+            "npm:@hookform/resolvers",
+            "npm:@tanstack/react-query",
+            "npm:@tanstack/react-query-devtools",
+            "npm:graphql",
+            "npm:react-hook-form",
+            "npm:react-toastify",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/frontend/postcss.config.js",
+          "hash": "2759402739052110475"
+        },
+        {
+          "file": "apps/frontend/project.json",
+          "hash": "17338459010658927400"
+        },
+        {
+          "file": "apps/frontend/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/frontend/src/apollo.ts",
+          "hash": "2498173038465955621",
+          "deps": [
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/apollo/client.ts",
+          "hash": "15942237876082756632",
+          "deps": [
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/app.tsx",
+          "hash": "3887874108567589730"
+        },
+        {
+          "file": "apps/frontend/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/frontend/src/components/ErrorBoundary.tsx",
+          "hash": "13779421347671966235",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/components/UserForm.tsx",
+          "hash": "4652963351842597780",
+          "deps": [
+            "npm:react-hook-form",
+            "npm:@hookform/resolvers"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/components/UserTable.tsx",
+          "hash": "277196173383791703"
+        },
+        {
+          "file": "apps/frontend/src/graphql/user/mutations.graphql",
+          "hash": "1276906795257573062"
+        },
+        {
+          "file": "apps/frontend/src/graphql/user/queries.graphql",
+          "hash": "6941034069926376689"
+        },
+        {
+          "file": "apps/frontend/src/hooks/useUsers.ts",
+          "hash": "7944543096176016775"
+        },
+        {
+          "file": "apps/frontend/src/main.tsx",
+          "hash": "5268842140879861459",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom",
+            "npm:react-dom",
+            "npm:@apollo/client",
+            "npm:react-toastify"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/pages/Home.tsx",
+          "hash": "13269831442373479955"
+        },
+        {
+          "file": "apps/frontend/src/schemas/userSchema.ts",
+          "hash": "2937564178786004508",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/frontend/src/styles.css",
+          "hash": "2866083945719690482"
+        },
+        {
+          "file": "apps/frontend/src/utils/toasts.ts",
+          "hash": "6004560264776034367",
+          "deps": [
+            "npm:react-toastify"
+          ]
+        },
+        {
+          "file": "apps/frontend/tailwind.config.js",
+          "hash": "13090734457927965885",
+          "deps": [
+            "npm:@nx/react"
+          ]
+        },
+        {
+          "file": "apps/frontend/tsconfig.app.json",
+          "hash": "7052585083786651230"
+        },
+        {
+          "file": "apps/frontend/tsconfig.json",
+          "hash": "1731869790938503978"
+        },
+        {
+          "file": "apps/frontend/vite.config.ts",
+          "hash": "6115739063653735492"
+        }
+      ],
+      "backend": [
+        {
+          "file": "apps/backend/Dockerfile",
+          "hash": "2290095842344233118"
+        },
+        {
+          "file": "apps/backend/config/__init__.py",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/backend/config/asgi.py",
+          "hash": "16455804020176485582"
+        },
+        {
+          "file": "apps/backend/config/schema.py",
+          "hash": "4219769308198983602"
+        },
+        {
+          "file": "apps/backend/config/settings.py",
+          "hash": "3038672111579302962"
+        },
+        {
+          "file": "apps/backend/config/urls.py",
+          "hash": "5396601633615977817"
+        },
+        {
+          "file": "apps/backend/config/wsgi.py",
+          "hash": "5400069036454139954"
+        },
+        {
+          "file": "apps/backend/manage.py",
+          "hash": "15671611741424800307"
+        },
+        {
+          "file": "apps/backend/project.json",
+          "hash": "13014240253699049845"
+        },
+        {
+          "file": "apps/backend/requirements.txt",
+          "hash": "5960394788896779962"
+        },
+        {
+          "file": "apps/backend/users/__init__.py",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/backend/users/admin.py",
+          "hash": "9485943410216178936"
+        },
+        {
+          "file": "apps/backend/users/apps.py",
+          "hash": "2452669985896998973"
+        },
+        {
+          "file": "apps/backend/users/migrations/0001_initial.py",
+          "hash": "16492514511583284265"
+        },
+        {
+          "file": "apps/backend/users/migrations/0002_remove_user_is_active.py",
+          "hash": "1471373913947753404"
+        },
+        {
+          "file": "apps/backend/users/migrations/__init__.py",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/backend/users/models.py",
+          "hash": "7688519344030672171"
+        },
+        {
+          "file": "apps/backend/users/schema.py",
+          "hash": "8200657331298129140"
+        },
+        {
+          "file": "apps/backend/users/tests.py",
+          "hash": "6492127080339034896"
+        },
+        {
+          "file": "apps/backend/users/views.py",
+          "hash": "16959082805484400362"
+        }
+      ]
+    }
+  }
+}
